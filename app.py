@@ -27,32 +27,42 @@ from nmetrics.utils.simulations import ejecutar_auditoria_cobertura, ejecutar_du
 
 DB_DICCIONARIOS_PATH = "diccionarios_estados.json"
 # ==============================================================================
-# CONFIGURACIÓN DE DESCARGA DE CACHÉ DESDE GITHUB RELEASES
+# CONFIGURACIÓN DE RUTAS Y AUTO-DESCARGA DE BASE DE DATOS DE CACHÉ
 # ==============================================================================
 import os
 import zipfile
 import urllib.request
 import streamlit as st
 
-# Usamos /tmp para almacenar el caché temporalmente en Streamlit Cloud
-TEMP_DIR = "/tmp"
-DB_CACHES_PATH = os.path.join(TEMP_DIR, "n_metrics_cache.db")
-ZIP_CACHE_PATH = os.path.join(TEMP_DIR, "n_metrics_cache.zip")
 
-# URL directa del asset en GitHub Releases
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DB_CACHES_PATH = os.path.join(BASE_DIR, "n_metrics_cache.db")
+ZIP_CACHE_PATH = os.path.join(BASE_DIR, "n_metrics_cache.zip")
+
+# URL directa del asset en GitHub Releases v0.8.4
 RELEASE_URL = "https://github.com/slrdloc/n-framework/releases/download/dic/n_metrics_cache.zip"
 
 @st.cache_resource
 def asegurar_base_datos_sqlite():
-    """Garantiza la presencia del archivo n_metrics_cache.db descargándolo desde GitHub Releases."""
+    """Garantiza la presencia del archivo n_metrics_cache.db descomprimiéndolo o descargándolo."""
     if os.path.exists(DB_CACHES_PATH):
         return True
 
+    # 1. Si el archivo .zip está subido localmente en la raíz
+    if os.path.exists(ZIP_CACHE_PATH):
+        try:
+            with zipfile.ZipFile(ZIP_CACHE_PATH, 'r') as zip_ref:
+                zip_ref.extractall(BASE_DIR)
+            return True
+        except Exception as e:
+            st.error(f"Error al descomprimir {ZIP_CACHE_PATH}: {e}")
+
+    # 2. Si no está el .db ni el .zip, se descarga desde Release Assets
     try:
-        with st.spinner("📥 Descargando e instalando caché SQLite desde GitHub Releases..."):
+        with st.spinner("📥 Descargando e instalando caché SQLite desde GitHub Releases (38 MB)..."):
             urllib.request.urlretrieve(RELEASE_URL, ZIP_CACHE_PATH)
             with zipfile.ZipFile(ZIP_CACHE_PATH, 'r') as zip_ref:
-                zip_ref.extractall(TEMP_DIR)
+                zip_ref.extractall(BASE_DIR)
         return True
     except Exception as e:
         st.error(f"⚠️ No se pudo descargar la base de datos desde GitHub Releases: {e}")
