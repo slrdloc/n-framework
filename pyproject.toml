@@ -8,7 +8,7 @@ version = "0.8.4"
 authors = [
   { name="slrdloc", email="slrdloc@gmail.com" },
 ]
-description = "N Framework: The Exact Thermodynamics of Consensus"
+description = "El Marco N: El consenso como estado en el espacio de configuración"
 license = {text = "GNU General Public License v3.0"}
 classifiers = [
     "Programming Language :: Python :: 3",
