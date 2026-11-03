@@ -27,42 +27,32 @@ from nmetrics.utils.simulations import ejecutar_auditoria_cobertura, ejecutar_du
 
 DB_DICCIONARIOS_PATH = "diccionarios_estados.json"
 # ==============================================================================
-# CONFIGURACIÓN DE RUTAS Y AUTO-DESCARGA DE BASE DE DATOS DE CACHÉ
+# CONFIGURACIÓN DE DESCARGA DE CACHÉ DESDE GITHUB RELEASES
 # ==============================================================================
 import os
 import zipfile
 import urllib.request
 import streamlit as st
 
+# Usamos /tmp para almacenar el caché temporalmente en Streamlit Cloud
+TEMP_DIR = "/tmp"
+DB_CACHES_PATH = os.path.join(TEMP_DIR, "n_metrics_cache.db")
+ZIP_CACHE_PATH = os.path.join(TEMP_DIR, "n_metrics_cache.zip")
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DB_CACHES_PATH = os.path.join(BASE_DIR, "n_metrics_cache.db")
-ZIP_CACHE_PATH = os.path.join(BASE_DIR, "n_metrics_cache.zip")
-
-# URL directa del asset en GitHub Releases v0.8.4
+# URL directa del asset en GitHub Releases
 RELEASE_URL = "https://github.com/slrdloc/n-framework/releases/download/dic/n_metrics_cache.zip"
 
 @st.cache_resource
 def asegurar_base_datos_sqlite():
-    """Garantiza la presencia del archivo n_metrics_cache.db descomprimiéndolo o descargándolo."""
+    """Garantiza la presencia del archivo n_metrics_cache.db descargándolo desde GitHub Releases."""
     if os.path.exists(DB_CACHES_PATH):
         return True
 
-    # 1. Si el archivo .zip está subido localmente en la raíz
-    if os.path.exists(ZIP_CACHE_PATH):
-        try:
-            with zipfile.ZipFile(ZIP_CACHE_PATH, 'r') as zip_ref:
-                zip_ref.extractall(BASE_DIR)
-            return True
-        except Exception as e:
-            st.error(f"Error al descomprimir {ZIP_CACHE_PATH}: {e}")
-
-    # 2. Si no está el .db ni el .zip, se descarga desde Release Assets
     try:
-        with st.spinner("📥 Descargando e instalando caché SQLite desde GitHub Releases (38 MB)..."):
+        with st.spinner("📥 Descargando e instalando caché SQLite desde GitHub Releases..."):
             urllib.request.urlretrieve(RELEASE_URL, ZIP_CACHE_PATH)
             with zipfile.ZipFile(ZIP_CACHE_PATH, 'r') as zip_ref:
-                zip_ref.extractall(BASE_DIR)
+                zip_ref.extractall(TEMP_DIR)
         return True
     except Exception as e:
         st.error(f"⚠️ No se pudo descargar la base de datos desde GitHub Releases: {e}")
@@ -345,9 +335,9 @@ ruta_icono = os.path.join(BASE_DIR, "icono.png")
 try:
     if os.path.exists(ruta_icono):
         img_icono = Image.open(ruta_icono)
-        st.set_page_config(page_title="Métricas N: Termodinámica del Consenso", page_icon=img_icono, layout="wide")
+        st.set_page_config(page_title="El Marco N: El consenso como estado en el espacio de configuración", page_icon=img_icono, layout="wide")
     else:
-        st.set_page_config(page_title="Métricas N: Termodinámica del Consenso", layout="wide")
+        st.set_page_config(page_title="El Marco N: El consenso como estado en el espacio de configuración", layout="wide")
 except Exception:
     pass
 
@@ -556,7 +546,7 @@ with col_logo:
     try: st.image("icono.png", width=60)
     except Exception: pass
 with col_titulo:
-    st.markdown('<h1 style="margin-top: 0rem; padding-top: 0rem;">Métricas N: La Termodinámica del Consenso</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 style="margin-top: 0rem; padding-top: 0rem;">El Marco N: El consenso como estado en el espacio de configuración</h1>', unsafe_allow_html=True)
 st.markdown("Plataforma oficial para la inferencia termodinámica, auditoría topológica y procesamiento a escala de Big Data de matrices empíricas.")
 
 opciones_pestañas = [
@@ -1204,43 +1194,8 @@ elif st.session_state.get("pestaña_activa") == '📚 BD Diccionarios':
 # PESTAÑA 8: MANUAL DE USUARIO
 # ==============================================================================
 elif st.session_state["pestaña_activa"] == '📖 Manual de Usuario':
-    # st.write("") 
-    
-    # col1, col2 = st.columns([1, 1])
-    # #col1, col2, col3 = st.columns([1, 1, 1])
-    # with col1:
-        # st.video("https://youtu.be/lbdqjTblE44")
-        # #st.video("https://youtu.be/mHQekxmCxH4")
-        # #st.video("https://1drv.ms/v/c/08766cf76462b907/IQBYRmIGbJHtSJ-JBO0wuWO_AZmtfI6VRZSjwY1IVxdsH7c?e=kh5Sp8")
-        
-    # with col2:
-        # st.write(""); st.write(""); st.write(""); st.write("")
-        # st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
-        
-        # base_dir = os.path.abspath(os.path.dirname(__file__))
-        # pdf_path = os.path.join(base_dir, "Doc", "N-Metrics_Logic_Blueprint.pdf")
-        
-        # if os.path.exists(pdf_path):
-            # with open(pdf_path, "rb") as pdf_file:
-                # st.download_button(
-                    # label="📄 Descargar N-Metrics Logic Blueprint (PDF)",
-                    # data=pdf_file,
-                    # file_name="N-Metrics_Logic_Blueprint.pdf",
-                    # mime="application/pdf",
-                    # width='stretch'
-                # )
-        # else:
-            # st.error("⚠️ El manual PDF no se encuentra disponible en el servidor.")
-            # st.info(f"🔍 [Depuración] El sistema está buscando el archivo exactamente aquí: `{pdf_path}`")
-            # st.markdown("</div>", unsafe_allow_html=True)
-            
-        # st.markdown("</div>", unsafe_allow_html=True)
-        
-    # #with col2:
-    # #    st.video("https://youtu.be/BjfPvSKJeXA")
-
     st.markdown("## 📖 Manual de Usuario y Fundamentos Teóricos")
-    st.write("Bienvenido al entorno analítico de **Métricas N**. Esta plataforma permite evaluar el nivel de consenso real de matrices empíricas, superando las paradojas de los estimadores frecuentistas clásicos mediante la aplicación de la **Termodinámica Exacta de la Información**.")
+    st.write("Bienvenido al entorno analítico de **El Marco N**. Esta plataforma permite evaluar el nivel de consenso real de matrices empíricas, superando las paradojas de los estimadores frecuentistas clásicos mediante la aplicación de la **Termodinámica Exacta de la Información**.")
     
     st.markdown("---")
     st.markdown("### 1. El Motor Termodinámico: El Valor Poblacional")
