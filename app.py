@@ -335,9 +335,9 @@ ruta_icono = os.path.join(BASE_DIR, "icono.png")
 try:
     if os.path.exists(ruta_icono):
         img_icono = Image.open(ruta_icono)
-        st.set_page_config(page_title="El Marco N: El consenso como estado en el espacio de configuración", page_icon=img_icono, layout="wide")
+        st.set_page_config(page_title="El Marco N", page_icon=img_icono, layout="wide")
     else:
-        st.set_page_config(page_title="El Marco N: El consenso como estado en el espacio de configuración", layout="wide")
+        st.set_page_config(page_title="El Marco N", layout="wide")
 except Exception:
     pass
 
@@ -546,7 +546,7 @@ with col_logo:
     try: st.image("icono.png", width=60)
     except Exception: pass
 with col_titulo:
-    st.markdown('<h1 style="margin-top: 0rem; padding-top: 0rem;">El Marco N: El consenso como estado en el espacio de configuración</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 style="margin-top: 0rem; padding-top: 0rem;">El Marco N</h1>', unsafe_allow_html=True)
 st.markdown("Plataforma oficial para la inferencia termodinámica, auditoría topológica y procesamiento a escala de Big Data de matrices empíricas.")
 
 opciones_pestañas = [
