@@ -557,7 +557,7 @@ with col_logo:
     except Exception: pass
 with col_titulo:
     st.markdown('<h1 style="margin-top: 0rem; padding-top: 0rem;">El Marco N</h1>', unsafe_allow_html=True)
-st.markdown("Plataforma oficial para la inferencia termodinámica, auditoría topológica y procesamiento a escala de Big Data de matrices empíricas.")
+st.markdown("Plataforma oficial del Marco N: El consenso como estado en el espacio de configuración")
 
 opciones_pestañas = [
     "📊 Cálculo del Consenso", 
