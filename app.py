@@ -40,7 +40,7 @@ DB_CACHES_PATH = os.path.join(BASE_DIR, "n_metrics_cache.db")
 ZIP_CACHE_PATH = os.path.join(BASE_DIR, "n_metrics_cache.zip")
 
 # URL directa del asset en GitHub Releases v0.8.4
-RELEASE_URL = "https://github.com/manuel-narsa/n-metrics/releases/download/v0.8.4/n_metrics_cache.zip"
+RELEASE_URL = "https://github.com/slrdloc/n-framework/releases/download/dic/n_metrics_cache.zip"
 
 @st.cache_resource
 def asegurar_base_datos_sqlite():
@@ -567,8 +567,7 @@ opciones_pestañas = [
     "🏗️ Generador de Matrices", 
     "⚔️ Duelo: N vs Clásicos", 
     "📚 BD Diccionarios",
-    "📖 Manual de Usuario"#, 
-#    "📜 Autoría y Licencia"
+    "📖 Manual de Usuario"
 ]
 pestaña_seleccionada = st.radio("Navegación del sistema:", options=opciones_pestañas, horizontal=True, index=opciones_pestañas.index(st.session_state["pestaña_activa"]), label_visibility="collapsed")
 
@@ -1380,42 +1379,3 @@ elif st.session_state["pestaña_activa"] == '📖 Manual de Usuario':
     """)
 
 
-# ==============================================================================
-# PESTAÑA 9: AUTORÍA Y LICENCIA
-# ==============================================================================
-elif st.session_state["pestaña_activa"] == '📜 Autoría y Licencia':
-    st.markdown("### Código Abierto y Transparencia")
-    st.write("El Marco Termodinámico $N$ es un proyecto de ciencia abierta creado por Manuel Narbona Sarria.")
-    
-    st.markdown("---")
-    col_git, col_pypi = st.columns(2)
-    with col_git:
-        st.markdown("#### 🐙 Repositorio en GitHub")
-        st.write("Audita los teoremas matemáticos y el motor de simulación.")
-        st.link_button("Ver en GitHub", "https://github.com/manuel-narsa/n-metrics")
-    with col_pypi:
-        st.markdown("#### 🐍 Paquete Oficial en PyPI")
-        st.write("Integra N-Metrics en tus propios scripts de Python.")
-        st.code("pip install n-metrics", language="bash")
-        st.link_button("Ver en PyPI", "https://pypi.org/project/n-metrics/")
-        
-    st.markdown("---")
-    st.markdown("### Licencia de Uso")
-    st.write("**Licencia Abierta**. GNU GPLv3.")
-    
-    st.markdown("---")
-    st.markdown("### 🎓 Cómo citar este trabajo")
-    st.write("Si utilizas N-Metrics o el Marco Termodinámico N en tu investigación, por favor cita el manuscrito original:")
-    
-    st.info("Narbona-Sarria, M. (2026). N, the Natural Concordance Coefficient: The Exact Thermodynamics of Consensus. Available at Zenodo: https://doi.org/10.5281/zenodo.20075068")
-    st.info("Narbona-Sarria, M. (2026). N, the Natural Concordance Coefficient: The Exact Thermodynamics of Consensus. Available at SSRN: https://ssrn.com/abstract=7119419 or http://dx.doi.org/10.2139/ssrn.7119419")
-    
-    with st.expander("Ver formato BibTeX para LaTeX"):
-        st.code("""@article{narbona_n_coefficient,
-  title={N, the Natural Concordance Coefficient: The Exact Thermodynamics of Consensus},
-  author={Narbona Sarria, Manuel},
-  journal={Preprint},
-  year={2026},
-  url={https://doi.org/10.5281/zenodo.22736297}
-  url={http://dx.doi.org/10.2139/ssrn.7119419}
-}""", language="bibtex")
