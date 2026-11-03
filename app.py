@@ -556,8 +556,8 @@ with col_logo:
     try: st.image("icono.png", width=60)
     except Exception: pass
 with col_titulo:
-    st.markdown('<h2 style="margin-top: 0rem; padding-top: 0rem;">El Marco N: El consenso como estado en el espacio de configuración</h2>', unsafe_allow_html=True)
-st.markdown("Plataforma oficial del Marco N: El consenso como estado en el espacio de configuración")
+    st.markdown('<h2 style="margin-top: 0rem; padding-top: 0rem;">El Marco N: El consenso como un estado en el espacio de configuración</h2>', unsafe_allow_html=True)
+#st.markdown("Plataforma oficial del Marco N: El consenso como un estado en el espacio de configuración")
 
 opciones_pestañas = [
     "📊 Cálculo del Consenso", 
