@@ -1,6 +1,6 @@
 # N-Framework: La Termodinámica Exacta del Consenso
 
-**N-Framework** (paquete `n-metrics` v0.8.5) es un ecosistema analítico y computacional diseñado para superar las limitaciones estructurales de las métricas clásicas de acuerdo e inter-evaluador (tales como la Alpha de Krippendorff, el Kappa de Fleiss, el Coeficiente de Correlación Intraclase ICC(2,1) o la W de Kendall). Desarrollado por **Manuel Narbona Sarria**, el marco redefine la medida del consenso entre evaluadores reemplazando el análisis tradicional basado en varianza por una formulación exacta fundamentada en la **física estadística y la termodinámica del consenso geométrico**.
+**N-Framework** (paquete `n-metrics` v0.8.5) es un ecosistema analítico y computacional diseñado para superar las limitaciones estructurales de las métricas clásicas de acuerdo e inter-evaluador (tales como la Alpha de Krippendorff, el Kappa de Fleiss, el Coeficiente de Correlación Intraclase ICC(2,1) o la W de Kendall). El marco redefine la medida del consenso entre evaluadores reemplazando el análisis tradicional basado en varianza por una formulación exacta fundamentada en la **física estadística y la termodinámica del consenso geométrico**.
 
 ---
 
@@ -109,7 +109,7 @@ La interfaz de usuario implementada en `app.py` contiene 9 pestañas especializa
    * *Ruido y Entropía Máxima:* Dispersión caótica.
 7. **Pestaña 7: Base de Datos de Diccionarios y Firmas:** Explorador e inspector de la base de datos SQLite (`n_metrics_cache.db`), permitiendo auditar firmas precalculadas y exportar diccionarios de macroestados en JSON.
 8. **Pestaña 8: Manual de Usuario y Fundamentos Teóricos:** Guía completa e interactiva con fundamentación matemática, glosario y documentación bilingüe.
-9. **Pestaña 9: Autoría y Licencia:** Créditos de desarrollo (Manuel Narbona Sarria), información de versión (0.8.5), cita en formato `CITATION.cff` y términos de la licencia GNU GPL v3.0.
+9. **Pestaña 9: Autoría y Licencia:** Términos de la licencia GNU GPL v3.0.
 
 ---
 
