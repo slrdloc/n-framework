@@ -164,20 +164,7 @@ nmetrics-ordinal-comp
 
 ---
 
-## 7. Citación y Licencia
-
-### Citación Académica
-Si utiliza N-Framework (`n-metrics`) en sus investigaciones o desarrollos académicos, por favor cite el trabajo según los metadatos de `CITATION.cff`:
-
-```bibtex
-@software{Narbona_Sarria_N-Metrics_The_Exact_2026,
-  author = {Narbona Sarria, Manuel},
-  title = {{N-Metrics: The Exact Thermodynamics of Consensus}},
-  version = {0.8.5},
-  year = {2026},
-  url = {https://github.com/manuel-narsa/n-metrics}
-}
-```
+## 7. Licencia
 
 ### Licencia
 Este proyecto está distribuido bajo la licencia **GNU General Public License v3.0 (GPLv3)**. Para más detalles, consulte el archivo `LICENSE.txt`.
