@@ -1,6 +1,6 @@
 # N-Framework: The Exact Thermodynamics of Consensus
 
-**N-Framework** (`n-metrics` package v0.8.5) is an analytical and computational ecosystem designed to overcome the structural limitations of classical inter-rater agreement metrics (such as Krippendorff's Alpha, Fleiss' Kappa, Intraclass Correlation Coefficient ICC(2,1), or Kendall's W). Developed by **Manuel Narbona Sarria**, the framework redefines rater consensus measurement by replacing traditional variance-based analysis with an exact formulation grounded in **statistical physics and the thermodynamics of geometric consensus**.
+**N-Framework** (`n-metrics` package v0.8.5) is an analytical and computational ecosystem designed to overcome the structural limitations of classical inter-rater agreement metrics (such as Krippendorff's Alpha, Fleiss' Kappa, Intraclass Correlation Coefficient ICC(2,1), or Kendall's W). The framework redefines rater consensus measurement by replacing traditional variance-based analysis with an exact formulation grounded in **statistical physics and the thermodynamics of geometric consensus**.
 
 ---
 
@@ -109,7 +109,7 @@ The user interface implemented in `app.py` contains 9 specialized tabs:
    * *Noise & Maximum Entropy:* Chaotic dispersion.
 7. **Tab 7: Dictionary & Signature Database:** Explorer and auditor for the SQLite database (`n_metrics_cache.db`), allowing precomputed signature inspection and JSON macrostate dictionary export.
 8. **Tab 8: User Manual & Theoretical Foundations:** Comprehensive interactive guide featuring mathematical foundations, glossary, and bilingual documentation.
-9. **Tab 9: Authorship & License:** Development credits (Manuel Narbona Sarria), version info (0.8.5), citation format (`CITATION.cff`), and GNU GPL v3.0 license terms.
+9. **Tab 9: License:** Development credits and GNU GPL v3.0 license terms.
 
 ---
 
